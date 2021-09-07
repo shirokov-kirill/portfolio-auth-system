@@ -1,20 +1,19 @@
 
 function DataBase(){
-    this.loginToPasswordStatusMap = new Map([String, [String, String]]);
-    this.loginToPasswordStatusMap.set('admin', ['admin', 'Admin']);
+    this.loginToPasswordStatusMap = new Map([["admin", ["admin", "Admin"]]]);
 }
 
-DataBase.prototype.contains = (login) => {
+DataBase.prototype.contains = function(login){
     return this.loginToPasswordStatusMap.has(login);
 }
 
-DataBase.prototype.add = (login, password) => {
-    loginToPasswordStatusMap.set(login, [password, 'Client']);
+DataBase.prototype.add = function(login, password){
+    this.loginToPasswordStatusMap.set(login, [password, 'Client']);
     return true;
 }
 
-DataBase.prototype.get = (login) => {
-    return loginToPasswordStatusMap.get(login);
+DataBase.prototype.get = function(login){
+    return this.loginToPasswordStatusMap.get(login);
 }
 
 module.exports = DataBase;

@@ -5,6 +5,10 @@ import Client from './ClientPage/Client.js';
 import Admin from'./AdminPage/Admin.js';
 import ReactDOM from 'react-dom';
 import React from 'react';
+import ServerConnector from './ServerConnector';
+import Pages from './Pages';
+
+const serverConnector = new ServerConnector();
 
 function App() {
     return(
@@ -32,32 +36,53 @@ function App() {
 
 App.onHomeButtonClicked = () => {
     ReactDOM.unmountComponentAtNode(document.getElementById('1'));
-    ReactDOM.render(
-        <Home/>,
-        document.getElementById('1')
-    );
+    if(serverConnector.isAbleToAccessPage(Pages.HOME)){
+        ReactDOM.render(
+            <Home/>,
+            document.getElementById('1')
+        );
+    } else {
+        ReactDOM.render(
+            <Auth serverConnector = {serverConnector}/>,
+            document.getElementById('1')
+        );
+    }
 }
 
 App.onClientButtonClicked = () => {
     ReactDOM.unmountComponentAtNode(document.getElementById('1'));
-    ReactDOM.render(
-        <Client/>,
-        document.getElementById('1')
-    );
+    if(serverConnector.isAbleToAccessPage(Pages.CLIENT)){
+        ReactDOM.render(
+            <Client/>,
+            document.getElementById('1')
+        );
+    } else {
+        ReactDOM.render(
+            <Auth serverConnector = {serverConnector}/>,
+            document.getElementById('1')
+        );
+    }
 }
 
 App.onAdminButtonClicked = () => {
     ReactDOM.unmountComponentAtNode(document.getElementById('1'));
-    ReactDOM.render(
-        <Admin/>,
-        document.getElementById('1')
-    );
+    if(serverConnector.isAbleToAccessPage(Pages.ADMIN)){
+        ReactDOM.render(
+            <Admin/>,
+            document.getElementById('1')
+        );
+    } else {
+        ReactDOM.render(
+            <Auth serverConnector = {serverConnector}/>,
+            document.getElementById('1')
+        );
+    }
 }
 
 App.onAuthButtonClicked = () => {
     ReactDOM.unmountComponentAtNode(document.getElementById('1'));
     ReactDOM.render(
-        <Auth/>,
+        <Auth serverConnector = {serverConnector}/>,
         document.getElementById('1')
     );
 }
