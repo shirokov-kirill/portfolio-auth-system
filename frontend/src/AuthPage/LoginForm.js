@@ -1,4 +1,5 @@
 import React from 'react';
+import Pages from '../Pages';
 import './LoginForm.css'
 
 function LoginForm(props){
@@ -38,7 +39,7 @@ LoginForm.onPasswordChange = function(event){
 }
 
 LoginForm.onConfirmClick = function(props){
-    props.serverConnector.authorize(LoginForm.state.login, LoginForm.state.password);
+    props.serverConnector.authorize(LoginForm.state.login, LoginForm.state.password, props.next);
     LoginForm.state.password = '';
     LoginForm.state.login = '';
     let updateFront = document.getElementsByClassName('enterField');

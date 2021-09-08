@@ -43,7 +43,7 @@ App.onHomeButtonClicked = () => {
         );
     } else {
         ReactDOM.render(
-            <Auth serverConnector = {serverConnector}/>,
+            <Auth serverConnector = {serverConnector} next = {App.onClientButtonClicked}/>,
             document.getElementById('1')
         );
     }
@@ -58,7 +58,7 @@ App.onClientButtonClicked = () => {
         );
     } else {
         ReactDOM.render(
-            <Auth serverConnector = {serverConnector}/>,
+            <Auth serverConnector = {serverConnector} next = {App.onClientButtonClicked}/>,
             document.getElementById('1')
         );
     }
@@ -73,7 +73,7 @@ App.onAdminButtonClicked = () => {
         );
     } else {
         ReactDOM.render(
-            <Auth serverConnector = {serverConnector}/>,
+            <Auth serverConnector = {serverConnector} next = {App.onClientButtonClicked}/>,
             document.getElementById('1')
         );
     }
@@ -82,7 +82,7 @@ App.onAdminButtonClicked = () => {
 App.onAuthButtonClicked = () => {
     ReactDOM.unmountComponentAtNode(document.getElementById('1'));
     ReactDOM.render(
-        <Auth serverConnector = {serverConnector}/>,
+        <Auth serverConnector = {serverConnector} next = {App.onClientButtonClicked}/>,
         document.getElementById('1')
     );
 }

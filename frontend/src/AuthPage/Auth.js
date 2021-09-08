@@ -5,7 +5,7 @@ import LoginForm from './LoginForm.js';
 function Auth(props) {
   return (
     <div className="App">
-      <LoginForm serverConnector = {props.serverConnector}/>
+      <LoginForm serverConnector = {props.serverConnector} next = {props.next}/>
     </div>
   );
 }

@@ -19,7 +19,7 @@ ServerConnector.prototype.isAbleToAccessPage = function(page){
     }
 }
 
-ServerConnector.prototype.authorize = function(login, password){
+ServerConnector.prototype.authorize = function(login, password, next){
     fetch("http://localhost:3001/auth", {
       method: "POST",
       mode: "cors",
@@ -33,6 +33,9 @@ ServerConnector.prototype.authorize = function(login, password){
         if(status !== null){
             this.userAuthorized = true;
             this.userStatus = status.toLowerCase();
+        }
+        if(this.isAbleToAccessPage(Pages.CLIENT)){
+            next();
         }
     });
 }
