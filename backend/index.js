@@ -23,16 +23,16 @@ app.post('/auth/', (req, res) => {
         let login = req.body.login;
         let password = req.body.password;
         if(dataBase.contains(login)){
-            let {realPassword, status} = dataBase.get(login);
+            let [realPassword, status] = dataBase.get(login);
             if(realPassword === password){
-                res.send(JSON.stringify({status: status}));
+                res.json({status: status});
             } else {
-                res.send(JSON.stringify({status: null}));
+                res.json({status: null});
             }
         } else {
             dataBase.add(login, password);
-            let {realPassword, status} = dataBase.get(login);
-            res.send(JSON.stringify({status: status}));
+            let [realPassword, status] = dataBase.get(login);
+            res.json({status: status});
         }
     }
 });
